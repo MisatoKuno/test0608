@@ -11,9 +11,7 @@ df_jp_ctgr=pd.read_csv(r"./csv_data/産業構造マップ_雇用_一人当たり
 df_pref_ind=pd.read_csv(r"./csv_data/産業構造マップ_雇用_一人当たり賃金_都道府県_全産業.csv",encoding="shift_jis")
 
 
-"""
-ヒートマップ
-"""
+# ヒートマップ
 st.header("■2019年:一人当たり平均賃金のヒートマップ")
 
 jp_lat_lon=pd.read_csv(r"./csv_data/pref_lat_lon.csv",encoding="shift_jis")
@@ -52,9 +50,7 @@ if show_df==True:
     st.write(df_pref_map)
 
 
-"""
-折れ線グラフ
-"""
+# 折れ線グラフ
 st.header("■集計年別の一人あたり賃金（万円）の推移")
 df_ts_mean=df_jp_ind[df_jp_ind["年齢"]=="年齢計"]
 df_ts_mean=df_ts_mean.rename(columns={"一人当たり賃金（万円）":"全国_一人当たり賃金（万円）"})
@@ -74,9 +70,7 @@ df_mean_line=df_mean_line.set_index("集計年")
 st.line_chart(df_mean_line)
 df_mean_line
 
-"""
-バブルチャート
-"""
+# バブルチャート
 st.header("■年齢階級別の全国一人当たり平均賃金（万円）")
 df_mean_bubble=df_jp_ind[df_jp_ind["年齢"]!="年齢計"]
 
@@ -95,10 +89,7 @@ fig=px.scatter(
 
 st.plotly_chart(fig)
 
-
-"""
-横棒グラフ
-"""
+# 横棒グラフ
 st.header("■産業別の賃金推移")
 year_lst=df_jp_ctgr["集計年"].unique()
 option_year=st.selectbox(
